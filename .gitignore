@@ -22,3 +22,7 @@ devenv.local.yaml
 
 # pre-commit
 .pre-commit-config.yaml
+
+## Panda
+styled-system
+styled-system-studio
