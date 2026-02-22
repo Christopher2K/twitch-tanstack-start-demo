@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "~5.32.0",
+    "@hookform/resolvers": "~5.2.2",
     "@t3-oss/env-core": "^0.13.8",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "^0.7.0",
@@ -38,6 +39,7 @@
     "pg": "^8.16.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-hook-form": "~7.71.2",
     "tailwindcss": "^4.1.18",
     "zod": "^4.1.11"
   },
