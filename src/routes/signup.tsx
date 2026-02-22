@@ -7,9 +7,9 @@ import {
   LoginForm,
   type LoginFormSchema,
 } from "@/features/auth/components/login-form";
-import { loginFn$ } from "@/features/auth.functions";
+import { signupFn$ } from "@/features/auth.functions";
 
-export const Route = createFileRoute("/login")({
+export const Route = createFileRoute("/signup")({
   component: RouteComponent,
   beforeLoad: async ({ context }) => {
     if (context.user) {
@@ -19,10 +19,9 @@ export const Route = createFileRoute("/login")({
 });
 
 function RouteComponent() {
-  const login = useServerFn(loginFn$);
-
+  const signup = useServerFn(signupFn$);
   const { mutate, error } = useMutation({
-    mutationFn: login,
+    mutationFn: signup,
   });
 
   const handleSubmit = (data: LoginFormSchema) => {
@@ -32,9 +31,9 @@ function RouteComponent() {
   return (
     <VStack maxWidth="500px" margin="auto" gap="10">
       <Heading as="h1" textStyle="lg">
-        Todo app with TanStack Start
+        Create an account
       </Heading>
-      <LoginForm onSubmit={handleSubmit} error={error} />
+      <LoginForm onSubmit={handleSubmit} error={error} type="signup" />
     </VStack>
   );
 }

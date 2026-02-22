@@ -15,9 +15,14 @@ export type LoginFormSchema = z.infer<typeof loginFormSchema>;
 export type LoginFormProps = {
   onSubmit: (data: LoginFormSchema) => unknown;
   error?: Error | null;
+  type?: "login" | "signup";
 };
 
-export const LoginForm = ({ onSubmit, error }: LoginFormProps) => {
+export const LoginForm = ({
+  onSubmit,
+  error,
+  type = "login",
+}: LoginFormProps) => {
   const { register, handleSubmit } = useForm({
     resolver,
   });
@@ -33,7 +38,9 @@ export const LoginForm = ({ onSubmit, error }: LoginFormProps) => {
     >
       {error && (
         <Alert.Root status="error">
-          <Alert.Title>Login failed</Alert.Title>
+          <Alert.Title>
+            {type === "login" ? "Login failed" : "Signup failed"}
+          </Alert.Title>
           <Alert.Description>{error.message}</Alert.Description>
         </Alert.Root>
       )}
@@ -58,7 +65,7 @@ export const LoginForm = ({ onSubmit, error }: LoginFormProps) => {
       </VStack>
 
       <Box w="full">
-        <Button type="submit">Login</Button>
+        <Button type="submit">{type === "login" ? "Login" : "Signup"}</Button>
       </Box>
     </VStack>
   );

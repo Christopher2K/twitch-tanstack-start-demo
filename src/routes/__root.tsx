@@ -2,8 +2,14 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import "../styles.css";
+import { getCurrentUserFn$ } from "@/features/auth.functions";
 
 export const Route = createRootRoute({
+  beforeLoad: async () => {
+    const user = await getCurrentUserFn$();
+    console.log("Root", user);
+    return { user };
+  },
   head: () => ({
     meta: [
       {

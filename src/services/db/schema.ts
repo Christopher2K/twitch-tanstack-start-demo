@@ -12,8 +12,10 @@ export const userTable = p.pgTable("user", {
     .default(sql`now()`)
     .$onUpdate(() => new Date()),
 });
+export type UserRecord = typeof userTable.$inferSelect;
+export type NewUserRecord = typeof userTable.$inferInsert;
 
-export const todo = p.pgTable("todo", {
+export const todoTable = p.pgTable("todo", {
   id: p.uuid().primaryKey().default(sql`uuidv7()`),
   title: p.text().notNull(),
   description: p.text(),
@@ -29,3 +31,5 @@ export const todo = p.pgTable("todo", {
     .notNull()
     .references(() => userTable.id),
 });
+export type TodoRecord = typeof todoTable.$inferSelect;
+export type NewTodoRecord = typeof todoTable.$inferInsert;
