@@ -7,7 +7,6 @@ import { getCurrentUserFn$ } from "@/features/auth/auth.functions";
 export const Route = createRootRoute({
   beforeLoad: async () => {
     const user = await getCurrentUserFn$();
-    console.log("Root", user);
     return { user };
   },
   head: () => ({
