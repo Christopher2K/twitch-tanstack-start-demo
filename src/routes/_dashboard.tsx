@@ -2,7 +2,7 @@ import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Box, HStack } from "styled-system/jsx";
 import { Button, Heading } from "@/components/ui";
-import { logoutFn$ } from "@/features/auth.functions";
+import { logoutFn$ } from "@/features/auth/auth.functions";
 
 export const Route = createFileRoute("/_dashboard")({
   component: RouteComponent,

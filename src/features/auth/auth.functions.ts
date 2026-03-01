@@ -4,8 +4,8 @@ import { useSession } from "@tanstack/react-start/server";
 import argon2 from "argon2";
 import { z } from "zod";
 import { env } from "@/env";
-import { authRepository } from "@/features/auth.repository";
 import type { UserSession } from "./auth.model";
+import { authRepository } from "./auth.repository";
 
 const hashPassword = createServerOnlyFn((password: string) =>
   argon2.hash(password),

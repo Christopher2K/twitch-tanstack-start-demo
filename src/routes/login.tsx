@@ -3,11 +3,11 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { VStack } from "styled-system/jsx";
 import { Heading } from "@/components/ui";
+import { loginFn$ } from "@/features/auth/auth.functions";
 import {
   LoginForm,
   type LoginFormSchema,
 } from "@/features/auth/components/login-form";
-import { loginFn$ } from "@/features/auth.functions";
 
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
