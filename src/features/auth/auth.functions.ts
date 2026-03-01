@@ -33,7 +33,7 @@ export const authenticatedUserOnlyMiddleware = createMiddleware({
   if (user === null) {
     throw new Error("Unauthenticated");
   }
-  return next();
+  return next({ context: { user } });
 });
 
 export const signupFn$ = createServerFn({ method: "POST" })
