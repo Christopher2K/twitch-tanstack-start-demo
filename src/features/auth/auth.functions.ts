@@ -1,5 +1,9 @@
 import { redirect } from "@tanstack/react-router";
-import { createServerFn, createServerOnlyFn } from "@tanstack/react-start";
+import {
+  createMiddleware,
+  createServerFn,
+  createServerOnlyFn,
+} from "@tanstack/react-start";
 import { useSession } from "@tanstack/react-start/server";
 import argon2 from "argon2";
 import { z } from "zod";
@@ -21,6 +25,16 @@ const useUserSession = () =>
     password: env.SESSION_SECRET,
     maxAge: 3600,
   });
+
+export const authenticatedUserOnlyMiddleware = createMiddleware({
+  type: "function",
+}).server(async ({ next }) => {
+  const user = await getCurrentUserFn$();
+  if (user === null) {
+    throw new Error("Unauthenticated");
+  }
+  return next();
+});
 
 export const signupFn$ = createServerFn({ method: "POST" })
   .inputValidator(
