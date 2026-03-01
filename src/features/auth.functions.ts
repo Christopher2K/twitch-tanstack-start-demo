@@ -93,3 +93,9 @@ export const getCurrentUserFn$ = createServerFn({ method: "GET" }).handler(
     return null;
   },
 );
+
+export const logoutFn$ = createServerFn().handler(async () => {
+  const session = await useUserSession();
+  await session.clear();
+  throw redirect({ to: "/login" });
+});
