@@ -37,7 +37,7 @@ function RouteComponent() {
           alignItems="center"
         >
           <Heading as="p" textStyle="lg" fontWeight="bold">
-            Todo Tantstack
+            Todo Tanstack
           </Heading>
           <Button onClick={handleLogout}>Logout</Button>
         </HStack>
